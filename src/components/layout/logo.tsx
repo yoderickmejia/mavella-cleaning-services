@@ -107,7 +107,7 @@ export function LogoLockup({
         <span
           className={cn(
             "font-display text-xl font-extrabold tracking-tight sm:text-[1.35rem]",
-            tone === "white" ? "text-white" : "text-ink",
+            tone === "white" ? "text-white" : "text-[#4569b0]",
           )}
         >
           Mavella
