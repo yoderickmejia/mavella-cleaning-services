@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { promo } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/anim/reveal";
@@ -40,9 +40,10 @@ export function SparkleBanner() {
                 sizes="(max-width: 1024px) 0px, 420px"
                 className="object-contain object-bottom"
               />
-              <div className="absolute bottom-8 right-8 flex size-24 flex-col items-center justify-center rounded-full bg-gold-400 text-center text-ink shadow-card">
-                <span className="font-display text-sm font-extrabold leading-none">Free</span>
-                <span className="mt-1 text-[0.7rem] font-semibold uppercase tracking-wider">Quote</span>
+              <div className="absolute bottom-8 right-8 flex size-28 flex-col items-center justify-center rounded-full bg-gradient-to-br from-gold-300 to-gold-400 text-center text-ink shadow-lift ring-4 ring-white/80">
+                <Star className="size-4 fill-ink/80 text-ink/80" strokeWidth={0} />
+                <span className="mt-1 font-display text-base font-extrabold leading-none">Free</span>
+                <span className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em]">Quote</span>
               </div>
             </div>
           </div>
