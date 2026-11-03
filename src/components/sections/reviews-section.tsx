@@ -1,9 +1,15 @@
 import Link from "next/link";
-import { Star, Quote, MessageCircleHeart } from "lucide-react";
+import { Star, Quote, MessageCircleHeart, User } from "lucide-react";
 import { reviews } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { SectionIntro } from "./section-intro";
 import { Reveal } from "@/components/anim/reveal";
+
+const avatarTones = [
+  "from-brand-500 to-sky-500",
+  "from-sky-500 to-brand-600",
+  "from-brand-600 to-brand-800",
+];
 
 /**
  * The client asked to "display genuine customer reviews here once available."
@@ -28,7 +34,7 @@ export function ReviewsSection() {
         />
 
         <Reveal stagger className="mt-14 grid gap-6 md:grid-cols-3">
-          {placeholders.map((c) => (
+          {placeholders.map((c, i) => (
             <div
               key={c.tag}
               className="relative flex flex-col rounded-card border border-line bg-white p-7 shadow-soft"
@@ -41,8 +47,10 @@ export function ReviewsSection() {
                 ))}
               </div>
               <div className="mt-5 flex items-center gap-3 border-t border-line pt-5">
-                <span className="flex size-11 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-sky-500 font-display font-bold text-white">
-                  ★
+                <span
+                  className={`flex size-11 items-center justify-center rounded-full bg-gradient-to-br ${avatarTones[i % avatarTones.length]} text-white ring-2 ring-white shadow-soft`}
+                >
+                  <User className="size-5" strokeWidth={2.25} />
                 </span>
                 <div className="leading-tight">
                   <p className="font-display text-sm font-bold text-ink">Your review here</p>
