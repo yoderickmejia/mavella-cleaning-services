@@ -1,51 +1,39 @@
 import Link from "next/link";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { promo } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/anim/reveal";
-import { Sparkle } from "@/components/anim/sparkle";
 import { Pill } from "./section-intro";
 
-/* Photo-free decorative seal: a rotating gold "Free Quote" badge framed by
-   concentric rings and sparkles — echoes the brand's circular badges. */
-function FreeQuoteSeal() {
+const perks = [
+  "Free, no-obligation quote",
+  "Fast, friendly response",
+  "Flexible scheduling that fits you",
+];
+
+/* Photo-free benefits card — what to expect when you request a quote. */
+function FreeQuoteCard() {
   return (
-    <div className="relative hidden min-h-72 items-center justify-center lg:flex">
-      {/* soft gold glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(22rem 18rem at 60% 50%, rgba(243,196,74,0.18), transparent 65%)",
-        }}
-      />
-      {/* concentric rings */}
-      <div aria-hidden className="absolute size-80 rounded-full border border-white/10" />
-      <div aria-hidden className="absolute size-64 rounded-full border border-white/15" />
-
-      {/* rotating seal */}
-      <div className="relative flex size-44 items-center justify-center rounded-full bg-gradient-to-br from-gold-300 to-gold-400 shadow-lift ring-8 ring-white/10">
-        <svg viewBox="0 0 100 100" className="animate-spin-slow absolute inset-0 size-full">
-          <defs>
-            <path id="free-quote-ring" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
-          </defs>
-          <text className="fill-ink/70 text-[7.5px] font-bold uppercase tracking-[0.22em]">
-            <textPath href="#free-quote-ring" startOffset="0%">
-              MAVELLA CLEANING • FREE QUOTE •&nbsp;
-            </textPath>
-          </text>
-        </svg>
-        <div className="flex flex-col items-center text-center text-ink">
-          <Star className="size-5 fill-ink/85 text-ink/85" strokeWidth={0} />
-          <span className="mt-1 font-display text-2xl font-extrabold leading-none">Free</span>
-          <span className="mt-1 text-xs font-semibold uppercase tracking-[0.2em]">Quote</span>
+    <div className="hidden items-center justify-center p-8 lg:flex lg:py-14 lg:pr-14">
+      <div className="w-full max-w-sm rounded-card-lg bg-white p-7 shadow-lift">
+        <div className="flex items-center gap-2 text-brand-600">
+          <Sparkles className="size-5" />
+          <span className="text-xs font-bold uppercase tracking-[0.18em]">Free Quote</span>
         </div>
+        <h3 className="mt-3 font-display text-xl font-extrabold text-ink">
+          Here&apos;s what to expect
+        </h3>
+        <ul className="mt-5 space-y-3.5">
+          {perks.map((p) => (
+            <li key={p} className="flex items-start gap-3">
+              <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                <Check className="size-3.5" strokeWidth={3} />
+              </span>
+              <span className="text-sm font-medium text-ink-700">{p}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-
-      <Sparkle className="animate-twinkle absolute left-10 top-10 size-6 text-sky-300" />
-      <Sparkle className="animate-twinkle absolute bottom-12 right-12 size-4 text-gold-300 [animation-delay:1.1s]" />
-      <Sparkle className="animate-twinkle absolute right-16 top-16 size-3 text-white/70 [animation-delay:0.6s]" />
     </div>
   );
 }
@@ -75,8 +63,8 @@ export function SparkleBanner() {
               </div>
             </div>
 
-            {/* Decorative visual — no photo */}
-            <FreeQuoteSeal />
+            {/* Benefits card — no photo */}
+            <FreeQuoteCard />
           </div>
         </Reveal>
       </div>
