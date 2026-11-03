@@ -77,6 +77,54 @@ export function LogoMark({
   );
 }
 
+/**
+ * Horizontal lockup: brand mark + wordmark text beside it ("Mavella" over
+ * "Cleaning Services"). Used in the site header so the name reads clearly.
+ */
+export function LogoLockup({
+  className,
+  tone = "dark",
+  priority = false,
+}: {
+  className?: string;
+  tone?: "dark" | "white";
+  priority?: boolean;
+}) {
+  return (
+    <LogoLink className={cn("group gap-2.5", className)}>
+      <Image
+        src="/logos/mavella-mark.svg"
+        alt=""
+        width={120}
+        height={119}
+        priority={priority}
+        className={cn(
+          "h-10 w-auto shrink-0 transition-transform duration-300 group-hover:scale-105 sm:h-11",
+          tone === "white" && "[filter:brightness(0)_invert(1)]",
+        )}
+      />
+      <span className="flex flex-col leading-none">
+        <span
+          className={cn(
+            "font-display text-xl font-extrabold tracking-tight sm:text-[1.35rem]",
+            tone === "white" ? "text-white" : "text-ink",
+          )}
+        >
+          Mavella
+        </span>
+        <span
+          className={cn(
+            "mt-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.2em]",
+            tone === "white" ? "text-brand-200" : "text-muted",
+          )}
+        >
+          Cleaning Services
+        </span>
+      </span>
+    </LogoLink>
+  );
+}
+
 /** Decorative mark (non-clickable) for purely visual contexts. */
 export function BrandMark({ className }: { className?: string }) {
   return (

@@ -7,7 +7,7 @@ import { Menu, Phone, Clock, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { mainNav, site, socials as socialLinks } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { Logo } from "./logo";
+import { LogoLockup } from "./logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent, SheetClose } from "@/components/ui/sheet";
 
@@ -110,7 +110,7 @@ export function SiteHeader() {
         )}
       >
         <div className="shell container-px flex h-18 items-center justify-between gap-4 py-3">
-          <Logo priority imgClassName="h-12 w-auto sm:h-14" />
+          <LogoLockup priority />
 
           <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
             {mainNav.map((item) => (
@@ -177,7 +177,7 @@ function MobileMenu({ isActive }: { isActive: (href: string) => boolean }) {
   return (
     <div className="flex h-full flex-col">
       <div className="border-b border-line px-6 pb-5 pt-6">
-        <Logo imgClassName="h-12 w-auto" />
+        <LogoLockup />
       </div>
       <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-4 py-5">
         <AnimatePresence>
