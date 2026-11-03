@@ -7,7 +7,7 @@ export function HowItWorks({ withIntro = true }: { withIntro?: boolean }) {
   return (
     <section className="bg-mist py-20 md:py-28">
       <div className="shell container-px">
-        {withIntro && <SectionIntro label="Why Choose Us" title={howItWorks.heading} />}
+        {withIntro && <SectionIntro title={howItWorks.heading} />}
 
         <div className="relative mt-20">
           {/* connecting arrows between steps (desktop) */}
