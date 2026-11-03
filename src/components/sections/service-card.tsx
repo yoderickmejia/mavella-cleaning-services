@@ -39,16 +39,19 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         </p>
 
         <div className="mt-5 flex items-center justify-between gap-4">
-          <span className="text-sm font-semibold text-brand-600">Request a quote</span>
-          <Link
-            href="/quote"
-            aria-label={`Request ${service.title}`}
-            className="flex size-11 items-center justify-center rounded-full border border-line text-brand-600 transition-all duration-300 group-hover:border-brand-600 group-hover:bg-brand-600 group-hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
-          >
+          <span className="text-sm font-semibold text-brand-600">Learn more</span>
+          <span className="flex size-11 items-center justify-center rounded-full border border-line text-brand-600 transition-all duration-300 group-hover:border-brand-600 group-hover:bg-brand-600 group-hover:text-white">
             <ArrowUpRight className="size-5" />
-          </Link>
+          </span>
         </div>
       </div>
+
+      {/* Whole card links to this service on the services page */}
+      <Link
+        href={`/services#${service.slug}`}
+        aria-label={`View ${service.title}`}
+        className="absolute inset-0 rounded-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+      />
     </motion.article>
   );
 }
