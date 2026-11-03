@@ -1,10 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { about } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { SectionIntro } from "./section-intro";
 import { Reveal } from "@/components/anim/reveal";
-import { BookServiceForm } from "@/components/forms/book-service-form";
 
 export function AboutPreview() {
   return (
@@ -40,15 +40,17 @@ export function AboutPreview() {
             </Reveal>
           </div>
 
-          {/* Book a Service form card */}
+          {/* Visual */}
           <Reveal>
-            <div className="relative rounded-card-lg border border-line bg-white p-6 shadow-card sm:p-8">
-              <h3 className="font-display text-xl font-bold text-ink">Book a Service</h3>
-              <p className="mt-1.5 text-sm text-muted">
-                Share a few details and we&apos;ll be in touch with your free quote.
-              </p>
-              <div className="mt-6">
-                <BookServiceForm />
+            <div className="relative overflow-hidden rounded-card-lg shadow-lift ring-1 ring-line">
+              <div className="relative aspect-[4/5]">
+                <Image
+                  src="/images/about.webp"
+                  alt="A Mavella professional caring for a bright, freshly cleaned home"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 46vw"
+                  className="object-cover"
+                />
               </div>
             </div>
           </Reveal>
