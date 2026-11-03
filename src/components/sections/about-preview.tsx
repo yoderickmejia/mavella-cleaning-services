@@ -13,7 +13,7 @@ export function AboutPreview() {
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
           {/* Copy */}
           <div>
-            <SectionIntro align="left" label="About Company" title={about.heading} />
+            <SectionIntro align="left" label="About Mavella" title={about.heading} />
             <Reveal stagger className="mt-6 space-y-4">
               {about.paragraphs.map((p) => (
                 <p key={p.slice(0, 24)} className="text-base leading-relaxed text-muted sm:text-lg">
