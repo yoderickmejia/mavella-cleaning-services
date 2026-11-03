@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 import { about, site } from "@/lib/site";
 import { PageHeader } from "@/components/sections/page-header";
-import { WhyChoose } from "@/components/sections/why-choose";
 import { StatsStrip } from "@/components/sections/stats-strip";
 import { ContactCta } from "@/components/sections/contact-cta";
 import { Reveal } from "@/components/anim/reveal";
@@ -84,7 +83,6 @@ export default function AboutPage() {
       </section>
 
       <StatsStrip />
-      <WhyChoose />
       <ContactCta />
     </>
   );
