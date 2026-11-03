@@ -23,9 +23,15 @@ export const site = {
     whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "15550142080",
     serviceArea: "Proudly serving Seattle, WA & nearby neighborhoods",
     serviceAreaCity: "Seattle, WA",
-    hours: "Mon–Fri: 8:00 AM – 6:00 PM · Sat: 9:00 AM – 2:00 PM",
-    hoursShort: "Mon–Fri 8–6 · Sat 9–2",
+    hours: "Mon–Fri: 8:00 AM – 6:00 PM",
+    hoursShort: "Mon–Fri 8–6",
   },
+} as const;
+
+// Real social profiles (provided by the client).
+export const socials = {
+  facebook: "https://www.facebook.com/share/1BXZ5UA4CE/?mibextid=wwXIfr",
+  instagram: "https://www.instagram.com/mavellacleaning?xtok=MWhSExZxBDr5YNRjeA%3D%3D&utm_source=qr",
 } as const;
 
 // Where Mavella operates — Seattle, WA and the neighborhoods it serves.
@@ -65,7 +71,7 @@ export const mainNav: NavItem[] = [
 
 export const hero = {
   smallHeading: "A FRESHER SPACE STARTS HERE",
-  headline: "Come Home to Clean. Stay for the Feeling.",
+  headline: "Home feels good, clean feels better.",
   description:
     "Your home should be a place to unwind, not another item on your to-do list. Mavella takes cleaning off your hands, leaving you with a fresher, more comfortable space to come back to.",
   primaryCta: { label: "Get a Free Quote", href: "/quote" },
@@ -78,6 +84,7 @@ export type Service = {
   description: string;
   image: string;
   imageAlt: string;
+  popular?: boolean;
 };
 
 export const servicesIntro = {
@@ -90,48 +97,43 @@ export const services: Service[] = [
   {
     slug: "residential-cleaning",
     title: "Residential Cleaning",
-    description:
-      "A cleaner home without having to do it all yourself. We'll help keep your everyday spaces neat, fresh, and comfortable.",
+    description: "Everyday spaces kept neat, fresh, and comfortable — without the work.",
     image: "/images/residential.webp",
     imageAlt: "A bright, tidy living room after a Mavella residential cleaning",
   },
   {
     slug: "deep-cleaning",
     title: "Deep Cleaning",
-    description:
-      "For the dirt, dust, and buildup that regular cleaning can miss. A more detailed clean for the places that need extra attention.",
+    description: "A detailed clean for the dirt, dust, and buildup regular cleaning misses.",
     image: "/images/deep-clean.webp",
     imageAlt: "A squeegee clearing soapy foam from a glass surface during a deep clean",
+    popular: true,
   },
   {
     slug: "commercial-cleaning",
     title: "Commercial Cleaning",
-    description:
-      "Give your team and customers a cleaner place to work, meet, and get things done.",
+    description: "A cleaner place for your team and customers to work and meet.",
     image: "/images/commercial.webp",
     imageAlt: "Professional cleaners servicing a modern open-plan office",
   },
   {
     slug: "move-in-move-out-cleaning",
     title: "Move-In / Move-Out Cleaning",
-    description:
-      "Moving is enough work already. Let us help prepare your space for a fresh start, whether you're arriving or leaving.",
+    description: "We prep your space for a fresh start, whether you're arriving or leaving.",
     image: "/images/move-clean.webp",
     imageAlt: "A spotless, freshly cleaned kitchen ready for move-in",
   },
   {
     slug: "post-construction-cleaning",
     title: "Post-Construction Cleaning",
-    description:
-      "After the work is done, there's still the cleanup. We'll help clear away the dust and mess left behind by construction or renovations.",
+    description: "We clear away the dust and mess left behind by construction or renovations.",
     image: "/images/post-construction.webp",
     imageAlt: "A worker vacuuming construction dust from a newly tiled floor",
   },
   {
     slug: "customized-cleaning",
     title: "Customized Cleaning",
-    description:
-      "Have a specific cleaning need? Tell us what your space needs, and we'll help you find the right solution.",
+    description: "Tell us what your space needs and we'll build the right cleaning plan.",
     image: "/images/custom-clean.webp",
     imageAlt: "Gloved hands with a foaming sponge cleaning at a kitchen sink",
   },
@@ -275,6 +277,14 @@ export const newsletter = {
     "Get helpful cleaning tips, updates from Mavella, and special offers delivered straight to your inbox.",
   fieldPlaceholder: "Enter Your Email Address",
   submitLabel: "Sign Me Up",
+};
+
+// "Follow Us" block shown on the home page in place of the newsletter signup.
+export const follow = {
+  eyebrow: "Let's Stay Connected",
+  heading: "Follow Us for More",
+  description:
+    "Get a closer look at our work, cleaning tips, and behind the scenes. Follow us on Facebook and Instagram!",
 };
 
 export const contact = {
