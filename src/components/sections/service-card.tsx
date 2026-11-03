@@ -25,6 +25,11 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 360px"
           className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
         />
+        {service.popular && (
+          <span className="absolute left-4 top-4 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white shadow-soft">
+            Most popular
+          </span>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
