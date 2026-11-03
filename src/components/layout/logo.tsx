@@ -26,10 +26,12 @@ function LogoLink({ children, className }: { children: ReactNode; className?: st
 export function Logo({
   variant = "color",
   className,
+  imgClassName,
   priority = false,
 }: {
   variant?: "color" | "white";
   className?: string;
+  imgClassName?: string;
   priority?: boolean;
 }) {
   return (
@@ -43,6 +45,7 @@ export function Logo({
         className={cn(
           "h-16 w-auto sm:h-20",
           variant === "white" && "[filter:brightness(0)_invert(1)]",
+          imgClassName,
         )}
       />
     </LogoLink>

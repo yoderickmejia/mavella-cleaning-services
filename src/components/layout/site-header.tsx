@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, Phone, Clock, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { mainNav, site } from "@/lib/site";
+import { mainNav, site, socials as socialLinks } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { LogoMark } from "./logo";
+import { Logo } from "./logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent, SheetClose } from "@/components/ui/sheet";
 
@@ -26,16 +26,9 @@ const InstagramIcon = ({ className }: IconProps) => (
     <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
   </svg>
 );
-const XIcon = ({ className }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
-    <path d="M17.5 3h3l-6.6 7.5L21.7 21h-6l-4.3-5.6L6.4 21H3.3l7-8L2.6 3h6.1l3.9 5.1L17.5 3Zm-1.05 16.1h1.65L7.6 4.8H5.8l10.65 14.3Z" />
-  </svg>
-);
-
 const socials = [
-  { label: "Facebook", icon: FacebookIcon, href: "#" },
-  { label: "Instagram", icon: InstagramIcon, href: "#" },
-  { label: "X (Twitter)", icon: XIcon, href: "#" },
+  { label: "Facebook", icon: FacebookIcon, href: socialLinks.facebook },
+  { label: "Instagram", icon: InstagramIcon, href: socialLinks.instagram },
 ];
 
 function InfoBlock({
@@ -76,6 +69,8 @@ function TopBar() {
             <a
               key={s.label}
               href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={s.label}
               className="flex size-8 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             >
@@ -115,7 +110,7 @@ export function SiteHeader() {
         )}
       >
         <div className="shell container-px flex h-18 items-center justify-between gap-4 py-3">
-          <LogoMark priority />
+          <Logo priority imgClassName="h-12 w-auto sm:h-14" />
 
           <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
             {mainNav.map((item) => (
@@ -182,7 +177,7 @@ function MobileMenu({ isActive }: { isActive: (href: string) => boolean }) {
   return (
     <div className="flex h-full flex-col">
       <div className="border-b border-line px-6 pb-5 pt-6">
-        <LogoMark />
+        <Logo imgClassName="h-12 w-auto" />
       </div>
       <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-4 py-5">
         <AnimatePresence>
