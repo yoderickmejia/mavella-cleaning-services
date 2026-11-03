@@ -9,7 +9,7 @@ export function ServiceAreas() {
   const row = [...serviceArea.neighborhoods, ...serviceArea.neighborhoods];
 
   return (
-    <section className="overflow-hidden bg-mist py-20 md:py-28">
+    <section className="overflow-hidden bg-foam py-20 md:py-28">
       <div className="shell container-px">
         <SectionIntro
           label={serviceArea.eyebrow}
