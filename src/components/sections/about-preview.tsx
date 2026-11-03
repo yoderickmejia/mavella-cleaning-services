@@ -45,8 +45,8 @@ export function AboutPreview() {
             <div className="relative overflow-hidden rounded-card-lg shadow-lift ring-1 ring-line">
               <div className="relative aspect-[4/5]">
                 <Image
-                  src="/images/hero.webp"
-                  alt="A Mavella professional caring for a bright, freshly cleaned home"
+                  src="/images/team.webp"
+                  alt="The Mavella cleaning team ready to help"
                   fill
                   sizes="(max-width: 1024px) 100vw, 46vw"
                   className="object-cover"
