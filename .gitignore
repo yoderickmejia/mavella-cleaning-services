@@ -75,3 +75,9 @@ shoot.mjs
 
 # local secrets / certs
 *.key
+
+# Design source assets (not web assets) — optimized copies live in public/images
+/portada/
+/servicios/
+/FOTOS RANDOM/
+/CAMBIOS MAVELLA.pdf
