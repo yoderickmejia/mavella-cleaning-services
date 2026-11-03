@@ -5,7 +5,7 @@ import { HowItWorks } from "@/components/sections/how-it-works";
 import { SparkleBanner } from "@/components/sections/sparkle-banner";
 import { ReviewsSection } from "@/components/sections/reviews-section";
 import { ServiceAreas } from "@/components/sections/service-areas";
-import { NewsletterSection } from "@/components/sections/newsletter-section";
+import { FollowSection } from "@/components/sections/follow-section";
 import { ContactSection } from "@/components/sections/contact-section";
 
 export default function Home() {
@@ -16,9 +16,9 @@ export default function Home() {
       <AboutPreview />
       <HowItWorks />
       <SparkleBanner />
-      <ReviewsSection />
       <ServiceAreas />
-      <NewsletterSection />
+      <ReviewsSection />
+      <FollowSection />
       <ContactSection />
     </>
   );
