@@ -1,8 +1,26 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { footer, site } from "@/lib/site";
+import { footer, site, socials } from "@/lib/site";
 import { Logo } from "./logo";
 import { Sparkle } from "@/components/anim/sparkle";
+
+type IconProps = { className?: string };
+const FacebookIcon = ({ className }: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+    <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6c-.8-.1-1.6-.15-2.4-.15-2.4 0-4.05 1.47-4.05 4.16V9.9H7.5V13h2.75v8h3.25Z" />
+  </svg>
+);
+const InstagramIcon = ({ className }: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden className={className}>
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+  </svg>
+);
+const footerSocials = [
+  { label: "Facebook", icon: FacebookIcon, href: socials.facebook },
+  { label: "Instagram", icon: InstagramIcon, href: socials.instagram },
+];
 
 export function SiteFooter() {
   return (
@@ -24,6 +42,20 @@ export function SiteFooter() {
             <Logo variant="white" />
             <p className="mt-5 font-display text-lg italic text-sky-300">{footer.tagline}</p>
             <p className="mt-4 text-sm leading-relaxed text-brand-200/90">{footer.blurb}</p>
+            <div className="mt-6 flex items-center gap-2.5">
+              {footerSocials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="flex size-9 items-center justify-center rounded-full bg-white/10 text-sky-300 transition-colors hover:bg-white/20 hover:text-white"
+                >
+                  <s.icon className="size-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
           <FooterCol title="Quick Links" links={footer.quickLinks} />

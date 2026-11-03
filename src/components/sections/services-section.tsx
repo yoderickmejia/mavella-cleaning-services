@@ -15,7 +15,7 @@ export function ServicesSection({ withIntro = true }: { withIntro?: boolean }) {
           {withIntro ? (
             <Reveal stagger className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-start">
               <div>
-                <Pill tone="dark">What We Offer</Pill>
+                <Pill tone="dark">Our Services</Pill>
                 <h2 className="mt-4 text-balance font-display text-3xl font-extrabold leading-[1.15] text-white sm:text-4xl md:text-[2.5rem]">
                   {servicesIntro.heading}
                 </h2>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { hero } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { SplitHeading } from "@/components/anim/split-heading";
@@ -44,6 +44,22 @@ export function Hero() {
             <Button asChild size="lg" variant="outline">
               <Link href={hero.secondaryCta.href}>{hero.secondaryCta.label}</Link>
             </Button>
+          </Reveal>
+
+          {/* Trust markers — fine checks, no fabricated metrics */}
+          <Reveal
+            delay={0.36}
+            stagger
+            className="mt-8 flex flex-wrap gap-x-6 gap-y-3"
+          >
+            {["Licensed & Insured", "Registered Business", "100% Satisfaction Guarantee"].map(
+              (item) => (
+                <span key={item} className="flex items-center gap-2 text-sm font-medium text-ink-700">
+                  <Check className="size-4 shrink-0 text-brand-600" strokeWidth={2.25} />
+                  {item}
+                </span>
+              ),
+            )}
           </Reveal>
         </div>
 
