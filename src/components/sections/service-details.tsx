@@ -1,14 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
 import { services } from "@/lib/site";
 import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/anim/reveal";
 import { cn } from "@/lib/utils";
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 /**
  * Detailed services layout: each service as a photo paired with its description,
- * alternating image/text sides down the page.
+ * alternating image/text sides. Photo and text slide in from opposite sides as
+ * they scroll into view, and the photo zooms gently on hover.
  */
 export function ServiceDetails() {
   return (
@@ -23,14 +28,20 @@ export function ServiceDetails() {
               className="grid scroll-mt-28 items-center gap-8 lg:grid-cols-2 lg:gap-14"
             >
               {/* Photo */}
-              <Reveal className={cn("relative", flip && "lg:order-2")}>
+              <motion.div
+                initial={{ opacity: 0, x: flip ? 64 : -64 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.7, ease }}
+                className={cn("group relative", flip && "lg:order-2")}
+              >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-card-lg shadow-lift ring-1 ring-line">
                   <Image
                     src={service.image}
                     alt={service.imageAlt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 46vw"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                   />
                   {service.popular && (
                     <span className="absolute left-4 top-4 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white shadow-soft">
@@ -38,10 +49,16 @@ export function ServiceDetails() {
                     </span>
                   )}
                 </div>
-              </Reveal>
+              </motion.div>
 
               {/* Description */}
-              <Reveal className={cn(flip && "lg:order-1")}>
+              <motion.div
+                initial={{ opacity: 0, x: flip ? -64 : 64 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.7, ease, delay: 0.1 }}
+                className={cn(flip && "lg:order-1")}
+              >
                 <h2 className="font-display text-2xl font-extrabold leading-tight text-ink sm:text-3xl md:text-[2rem]">
                   {service.title}
                 </h2>
@@ -56,7 +73,7 @@ export function ServiceDetails() {
                     </Link>
                   </Button>
                 </div>
-              </Reveal>
+              </motion.div>
             </div>
           );
         })}
