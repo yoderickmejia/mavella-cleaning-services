@@ -68,7 +68,16 @@ export async function sendLead(
       auth: { user, pass },
     });
 
-    await transport.sendMail({ from, to, replyTo: data.email, subject, text, html });
+    await transport.sendMail({
+      from: stripHeader(from),
+      to: stripHeader(to),
+      // replyTo is the only header built from user input — strip CR/LF so a
+      // crafted value can't inject extra email headers (header injection).
+      replyTo: data.email ? stripHeader(data.email) : undefined,
+      subject: stripHeader(subject),
+      text,
+      html,
+    });
     return { ok: true, delivered: "email" };
   } catch (err) {
     console.error("[mailer] SMTP exception", err);
@@ -89,4 +98,9 @@ function escapeHtml(s: string) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+/** Remove CR/LF (and surrounding whitespace) to prevent email header injection. */
+function stripHeader(s: string) {
+  return s.replace(/[\r\n]+/g, " ").trim();
 }

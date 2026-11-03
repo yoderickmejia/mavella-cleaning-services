@@ -13,9 +13,9 @@ export const quoteSchema = z.object({
   fullName: name,
   phone,
   email,
-  service: z.string().trim().min(1, "Please choose a service."),
-  propertyType: z.string().trim().optional().or(z.literal("")),
-  preferredDate: z.string().trim().optional().or(z.literal("")),
+  service: z.string().trim().min(1, "Please choose a service.").max(80),
+  propertyType: z.string().trim().max(60).optional().or(z.literal("")),
+  preferredDate: z.string().trim().max(40).optional().or(z.literal("")),
   propertySize: z.string().trim().max(60).optional().or(z.literal("")),
   details: z.string().trim().max(1500).optional().or(z.literal("")),
   // honeypot
@@ -28,7 +28,7 @@ export const contactSchema = z.object({
   fullName: name,
   email,
   phone: phone.optional().or(z.literal("")),
-  service: z.string().trim().optional().or(z.literal("")),
+  service: z.string().trim().max(80).optional().or(z.literal("")),
   message: z.string().trim().min(10, "Please add a few details so we can help.").max(1500),
   company: z.string().max(0).optional(),
 });
